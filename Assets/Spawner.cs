@@ -12,10 +12,11 @@ public class Spawner : MonoBehaviour
     {
         //Invoke(nameof(SpawnParticle), _fireRate);
         //Invoke("SpawnParticle", _fireRate);
-
+        //CancelInvoke("SpawnParticle");
         InvokeRepeating("SpawnParticle", 0f, _fireRate);
 
-        //CancelInvoke("SpawnParticle");
+        //Coroutine
+        //StartCoroutine(SpawnRoutine());
     }
     
     void SpawnParticle()
@@ -26,6 +27,17 @@ public class Spawner : MonoBehaviour
         Instantiate(_prefab, destination, transform.rotation);
 
         //Invoke("SpawnParticle", _fireRate);
+    }
+
+
+    // Version coroutine()
+    IEnumerator SpawnRoutine()
+    {
+        while(true)
+        {
+            SpawnParticle();
+            yield return new WaitForSeconds(_fireRate);
+        }
     }
 
 }
