@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
         //Coroutine
         //StartCoroutine(SpawnRoutine());
     }
-    
+
     void SpawnParticle()
     {
         //Vector3 randomDirection = new Vector2( Random.Range(-1f, 1f), Random.Range(-1f, 1f) );
