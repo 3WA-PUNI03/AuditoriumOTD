@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6894287855802790629}
   - component: {fileID: 2762965676563011346}
   - component: {fileID: 4558753858474086191}
+  - component: {fileID: 2138769008652439131}
   m_Layer: 0
   m_Name: Particule
   m_TagString: Untagged
@@ -75,6 +76,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 2762965676563011346}
   _speed: 10
+--- !u!58 &2138769008652439131
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148803570356422543}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.83
 --- !u!1 &6276350710713652205
 GameObject:
   m_ObjectHideFlags: 0
