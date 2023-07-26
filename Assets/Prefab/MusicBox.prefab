@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6601250989902667478}
   - component: {fileID: 3130636923578351494}
+  - component: {fileID: 2384219778760716768}
   m_Layer: 0
   m_Name: MusicBox
   m_TagString: Untagged
@@ -241,6 +242,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.6
+--- !u!114 &2384219778760716768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3454702022031037053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e558e64ce0fd031469e12b3e0bc8a70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _validationThreshold: 1
 --- !u!1 &4803008018996486923
 GameObject:
   m_ObjectHideFlags: 0
