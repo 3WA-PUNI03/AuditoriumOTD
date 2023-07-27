@@ -828,6 +828,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicBox
       objectReference: {fileID: 0}
+    - target: {fileID: 5272885779031849144, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6601250989902667478, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
       propertyPath: m_RootOrder
       value: 2
