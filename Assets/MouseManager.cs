@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,25 +6,64 @@ using UnityEngine.InputSystem;
 
 public class MouseManager : MonoBehaviour
 {
+    [SerializeField] Camera _camera;
 
     [SerializeField] InputActionReference _mousePos;
     [SerializeField] InputActionReference _mouseClick;
 
+    [SerializeField] Texture2D _resizeIcon;
+    [SerializeField] Texture2D _moveIcon;
 
     void Update()
     {
-        // On récupère si le bouton gauche est pressé ou pas
+    // On récupère si le bouton gauche est pressé ou pas
         bool isButtonPressed;
-// A vous de faire
+        isButtonPressed = _mouseClick.action.IsPressed();
+        //Debug.Log($"Left button : {isButtonPressed}");
 
-        Debug.Log(isButtonPressed);
-
-        // On récupère les coordonnées de la souris
+    // On récupère les coordonnées de la souris
         Vector2 mousePosition;
-// A vous de faire
+        mousePosition = _mousePos.action.ReadValue<Vector2>();
+        //Debug.Log($"Mouse Pos : {mousePosition}");
 
 
-        Debug.Log(mousePosition);
+    // On récupère un rayon de la part de la camera par rapport à la position du curseur du jeu
+        Ray ray = _camera.ScreenPointToRay(mousePosition);
+    // On demande au moteur physique de produire le raycast pour detecter un collider sur le chemin
+        RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+        // On écrit le nom du collider que l'on vient de toucher
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.name);
+
+            Cursor.SetCursor(_resizeIcon, Vector2.zero, CursorMode.ForceSoftware);
+
+        }
+        else
+        {
+            Debug.Log("rien touché");
+        }
+
+
+
+
+        Debug.DrawRay(ray.origin, ray.direction * 10, Color.green);
+        
+
+        #region 
+        // Explication de base du raycast
+        Vector3 origin = new Vector3(1, 1, 0);
+        Vector3 dir = Vector3.right * 2;
+        if(    Physics2D.Raycast(origin, dir, 2f)     )
+        {
+            Debug.DrawRay(origin, dir, Color.green);
+        }
+        else
+        {
+            Debug.DrawRay(origin, dir, Color.red);
+        }
+        #endregion
+
 
     }
 }

@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 6973214139312192911}
   m_Layer: 0
   m_Name: ResizeCircle
-  m_TagString: Untagged
+  m_TagString: Resize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 4766383277700107783}
   m_Layer: 0
   m_Name: MoveCircle
-  m_TagString: Untagged
+  m_TagString: Move
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
