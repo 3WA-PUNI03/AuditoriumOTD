@@ -31,11 +31,12 @@ public class MusicBox : MonoBehaviour
     [Header("Le taux de complétion du niveau entre 0 et 1 (0% => 100%)")]
     [SerializeField] float _currentPercentage;
 
-    //0.0-0.2 / 
-    //0.2-0.4 / 
-    //0.4-0.6 / 
-    //0.6-0.8 / 
-    //0.8-1
+    //0.0-0.2 /  0 lumière
+    //0.2-0.4 /  1 lumière
+    //0.4-0.6 /  2 lumière
+    //0.6-0.8 /  3 lumière
+    //0.8-1.0 /  4 lumière        
+    // 1         5 lumière
 
 
     private void Update()
@@ -76,9 +77,37 @@ public class MusicBox : MonoBehaviour
 
         // On met à jour le volume par rapport au taux de completion de la jauge
         _audio.volume = _currentPercentage;
+        UpdateVisual();
 
-        // On met également à jour le visuel en changeant la couleur de nos squares
-        if(_currentPercentage < 0.2)    // On desactive tout
+    }
+
+    private void UpdateVisual()
+    {
+        // On calcul les tranches de notre jauges
+        float part = 1f / _jauges.Count;             // float / int ==> int 
+
+        // On calcule le nombre de jauges à activer
+        int nbActivated = (int)(_currentPercentage / part);
+
+        // On parcours le tableau et on lui cale la couleur qui lui correspond par rapport à notre compteur de lampe à activer
+        for (int i = 0; i < _jauges.Count; i++)
+        {
+            // Si on a une 
+            if (nbActivated > 0)
+            {
+                _jauges[i].color = _activatedColor;
+                nbActivated--;
+            }
+            else
+            {
+                _jauges[i].color = _desactivatedColor;
+            }
+        }
+
+        return;
+
+        // La méthode laborieuse qui est pas très élégante mais au moins elle marche
+        if (_currentPercentage < 0.2)    // On desactive tout
         {
             _jauge1.color = _desactivatedColor;
             _jauge2.color = _desactivatedColor;
@@ -118,7 +147,7 @@ public class MusicBox : MonoBehaviour
             _jauge4.color = _desactivatedColor;
             _jauge5.color = _desactivatedColor;
         }
-        else if(_currentPercentage > 0.2)    // Allumer une loupiotte
+        else if (_currentPercentage > 0.2)    // Allumer une loupiotte
         {
             _jauge1.color = _activatedColor;
             _jauge2.color = _desactivatedColor;
@@ -126,8 +155,6 @@ public class MusicBox : MonoBehaviour
             _jauge4.color = _desactivatedColor;
             _jauge5.color = _desactivatedColor;
         }
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

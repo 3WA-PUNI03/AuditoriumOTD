@@ -898,6 +898,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2384219778760716768, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
+      propertyPath: _jauges.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384219778760716768, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
       propertyPath: _desactivatedColor.a
       value: 1
       objectReference: {fileID: 0}
@@ -913,6 +917,26 @@ PrefabInstance:
       propertyPath: _desactivatedColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2384219778760716768, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
+      propertyPath: _jauges.Array.data[0]
+      value: 
+      objectReference: {fileID: 1087460331}
+    - target: {fileID: 2384219778760716768, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
+      propertyPath: _jauges.Array.data[1]
+      value: 
+      objectReference: {fileID: 1538148006}
+    - target: {fileID: 2384219778760716768, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
+      propertyPath: _jauges.Array.data[2]
+      value: 
+      objectReference: {fileID: 1011849536}
+    - target: {fileID: 2384219778760716768, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
+      propertyPath: _jauges.Array.data[3]
+      value: 
+      objectReference: {fileID: 1762764304}
+    - target: {fileID: 2384219778760716768, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
+      propertyPath: _jauges.Array.data[4]
+      value: 
+      objectReference: {fileID: 683047489}
     - target: {fileID: 2384219778760716768, guid: 08131a573eca9ec44926c1f1dd300068, type: 3}
       propertyPath: _oneJaugeEvent.m_PersistentCalls.m_Calls.Array.size
       value: 0
