@@ -16,12 +16,12 @@ public class MusicBox : MonoBehaviour
     [SerializeField] Color _desactivatedColor;
     [SerializeField] List<SpriteRenderer> _jauges;
 
-
-    [SerializeField] SpriteRenderer _jauge1;
-    [SerializeField] SpriteRenderer _jauge2;
-    [SerializeField] SpriteRenderer _jauge3;
-    [SerializeField] SpriteRenderer _jauge4;
-    [SerializeField] SpriteRenderer _jauge5;
+    // L'ancienne version avec la méthode laborieuse dans UpdateVisual
+    //[SerializeField] SpriteRenderer _jauge1;
+    //[SerializeField] SpriteRenderer _jauge2;
+    //[SerializeField] SpriteRenderer _jauge3;
+    //[SerializeField] SpriteRenderer _jauge4;
+    //[SerializeField] SpriteRenderer _jauge5;
 
     [Header("DEBUG")]
     [Header("Le nombre de particule dans la zone")]
@@ -31,12 +31,7 @@ public class MusicBox : MonoBehaviour
     [Header("Le taux de complétion du niveau entre 0 et 1 (0% => 100%)")]
     [SerializeField] float _currentPercentage;
 
-    //0.0-0.2 /  0 lumière
-    //0.2-0.4 /  1 lumière
-    //0.4-0.6 /  2 lumière
-    //0.6-0.8 /  3 lumière
-    //0.8-1.0 /  4 lumière        
-    // 1         5 lumière
+    
 
 
     private void Update()
@@ -106,6 +101,14 @@ public class MusicBox : MonoBehaviour
 
         return;
 
+#if false
+        //0.0-0.2 /  0 lumière
+        //0.2-0.4 /  1 lumière
+        //0.4-0.6 /  2 lumière
+        //0.6-0.8 /  3 lumière
+        //0.8-1.0 /  4 lumière        
+        // 1         5 lumière
+
         // La méthode laborieuse qui est pas très élégante mais au moins elle marche
         if (_currentPercentage < 0.2)    // On desactive tout
         {
@@ -155,6 +158,7 @@ public class MusicBox : MonoBehaviour
             _jauge4.color = _desactivatedColor;
             _jauge5.color = _desactivatedColor;
         }
+#endif
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

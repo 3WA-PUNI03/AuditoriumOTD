@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 2294729113846836159}
   - component: {fileID: 2842535426622635546}
   - component: {fileID: 1438277123919430731}
+  - component: {fileID: 6973214139312192911}
   m_Layer: 0
   m_Name: ResizeCircle
   m_TagString: Untagged
@@ -324,12 +325,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.05
+  m_Radius: 1.43
 --- !u!114 &1438277123919430731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,8 +344,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _segmentCount: 32
-  _radius: 1
+  _radius: 1.38
   _colliderMargin: 0
+--- !u!249 &6973214139312192911
+AreaEffector2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631780591366000819}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGlobalAngle: 0
+  m_ForceAngle: 0
+  m_ForceMagnitude: 10
+  m_ForceVariation: 0
+  m_ForceTarget: 0
+  m_Drag: 0
+  m_AngularDrag: 0
 --- !u!1 &9166646480710970380
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +574,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
