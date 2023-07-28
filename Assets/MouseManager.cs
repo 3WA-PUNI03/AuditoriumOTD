@@ -31,20 +31,26 @@ public class MouseManager : MonoBehaviour
         Ray ray = _camera.ScreenPointToRay(mousePosition);
     // On demande au moteur physique de produire le raycast pour detecter un collider sur le chemin
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+        
         // On écrit le nom du collider que l'on vient de toucher
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.name);
 
-            Cursor.SetCursor(_resizeIcon, Vector2.zero, CursorMode.ForceSoftware);
-
+            if(hit.collider.gameObject.CompareTag("Resize"))
+            {
+                Cursor.SetCursor(_resizeIcon, Vector2.zero, CursorMode.ForceSoftware);
+            }
+            else if(hit.collider.gameObject.CompareTag("Move"))
+            { 
+                Cursor.SetCursor(_moveIcon, Vector2.zero, CursorMode.ForceSoftware);
+            }
         }
         else
         {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
             Debug.Log("rien touché");
         }
-
-
 
 
         Debug.DrawRay(ray.origin, ray.direction * 10, Color.green);

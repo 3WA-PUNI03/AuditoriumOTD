@@ -155,6 +155,8 @@ MonoBehaviour:
   _camera: {fileID: 519420031}
   _mousePos: {fileID: -8211796705754901720, guid: 15bfe098077189849a2128bb8da2392b, type: 3}
   _mouseClick: {fileID: -613190840253628588, guid: 15bfe098077189849a2128bb8da2392b, type: 3}
+  _resizeIcon: {fileID: 2800000, guid: 3044446006d994f4cafbb545084e6e6b, type: 3}
+  _moveIcon: {fileID: 2800000, guid: 7a9a0dd7570af2745a00bd060fbda302, type: 3}
 --- !u!4 &142604273
 Transform:
   m_ObjectHideFlags: 0
