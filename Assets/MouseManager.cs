@@ -14,6 +14,9 @@ public class MouseManager : MonoBehaviour
     [SerializeField] Texture2D _resizeIcon;
     [SerializeField] Texture2D _moveIcon;
 
+    GameObject _currentMoveCircle;
+
+
     void Update()
     {
     // On récupère si le bouton gauche est pressé ou pas
@@ -31,8 +34,9 @@ public class MouseManager : MonoBehaviour
         Ray ray = _camera.ScreenPointToRay(mousePosition);
     // On demande au moteur physique de produire le raycast pour detecter un collider sur le chemin
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+        Debug.DrawRay(ray.origin, ray.direction * 10, Color.green);
         
-        // On écrit le nom du collider que l'on vient de toucher
+    // On écrit le nom du collider que l'on vient de toucher
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.name);
@@ -40,10 +44,24 @@ public class MouseManager : MonoBehaviour
             if(hit.collider.gameObject.CompareTag("Resize"))
             {
                 Cursor.SetCursor(_resizeIcon, Vector2.zero, CursorMode.ForceSoftware);
+
+
+
             }
             else if(hit.collider.gameObject.CompareTag("Move"))
             { 
                 Cursor.SetCursor(_moveIcon, Vector2.zero, CursorMode.ForceSoftware);
+
+                // Ici le curseur est au dessus du cercle violet + le joueur a cliqué
+                if(isButtonPressed)
+                {
+                    _currentMoveCircle = hit.collider.gameObject;
+                }
+                else
+                {
+                    _currentMoveCircle = null;
+                }
+
             }
         }
         else
@@ -53,8 +71,19 @@ public class MouseManager : MonoBehaviour
         }
 
 
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.green);
-        
+
+        // On met à jour nos cercles
+        if(_currentMoveCircle != null)
+        {
+            //_currentMoveCircle.GetComponentInParent<EffectorTag>();
+
+            Vector3 pos = _camera.ScreenToWorldPoint(mousePosition);
+            Debug.Log(pos);
+            pos.z = 0;
+            _currentMoveCircle.transform.parent.parent.position = pos;
+
+            //_currentMoveCircle.transform.position = pos;
+        }
 
         #region 
         // Explication de base du raycast
