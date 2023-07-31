@@ -58,7 +58,7 @@ public class MouseManager : MonoBehaviour
                 }
 
             }
-            else if(hit.collider.gameObject.CompareTag("Move"))
+            else if(hit.collider.gameObject.CompareTag("Move") && _currentResizeCircle == null)
             { 
                 Cursor.SetCursor(_moveIcon, Vector2.zero, CursorMode.ForceSoftware);
 
@@ -77,12 +77,11 @@ public class MouseManager : MonoBehaviour
         else
         {
             Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
-            Debug.Log("rien touché");
         }
 
 
         // On met à jour nos cercles
-        if(_currentMoveCircle != null)
+        if (_currentMoveCircle != null)
         {
             // Pour bouger l'effector on doit déplacer l'objet par rapport à la position du curseur.
             // Pour ça on demande à la camera de nous fournir la position du monde pour notre coordonnée de souris
@@ -93,17 +92,25 @@ public class MouseManager : MonoBehaviour
             // 
             _currentMoveCircle.transform.parent.parent.position = pos;
         }
-
-
         if(_currentResizeCircle !=null)
         {
+            //_currentMoveCircle.GetComponent<CircleShape>().Radius = Mathf.Clamp(Vector2.Distance(_currentResizeCircle.transform.position, _camera.ScreenToWorldPoint(mousePosition)), 1, 10);
+
             // Récupère la position du curseur dans le monde
+            Vector3 pos = _camera.ScreenToWorldPoint(mousePosition);
 
-            
             // On calcule distance entre le cercle et le curseur, on obtient le radius
-
+            var dist = Vector2.Distance(_currentResizeCircle.transform.position, pos);
 
             // On choppe le composant CircleShape et on lui change son radius
+            var cs = _currentResizeCircle.GetComponent<CircleShape>();
+            cs.Radius = dist;
+
+            cs.Radius = Mathf.Clamp(cs.Radius, 1, 10);
+
+            // Equivalent du clamp
+            //if(cs.Radius < 1) cs.Radius = 1;
+            //if (cs.Radius > 10) cs.Radius = 10;
 
         }
 
