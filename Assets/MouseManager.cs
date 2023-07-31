@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,7 @@ public class MouseManager : MonoBehaviour
     [SerializeField] Texture2D _moveIcon;
 
     GameObject _currentMoveCircle;
+    GameObject _currentResizeCircle;
 
 
     void Update()
@@ -45,7 +47,15 @@ public class MouseManager : MonoBehaviour
             {
                 Cursor.SetCursor(_resizeIcon, Vector2.zero, CursorMode.ForceSoftware);
 
-
+                // Ici le curseur est au dessus du cercle violet + le joueur a cliqué
+                if (isButtonPressed)
+                {
+                    _currentResizeCircle = hit.collider.gameObject;
+                }
+                else
+                {
+                    _currentResizeCircle = null;
+                }
 
             }
             else if(hit.collider.gameObject.CompareTag("Move"))
@@ -71,18 +81,30 @@ public class MouseManager : MonoBehaviour
         }
 
 
-
         // On met à jour nos cercles
         if(_currentMoveCircle != null)
         {
-            //_currentMoveCircle.GetComponentInParent<EffectorTag>();
-
+            // Pour bouger l'effector on doit déplacer l'objet par rapport à la position du curseur.
+            // Pour ça on demande à la camera de nous fournir la position du monde pour notre coordonnée de souris
             Vector3 pos = _camera.ScreenToWorldPoint(mousePosition);
             Debug.Log(pos);
+            // Le ScreenToWorldPoint nous donne un Z=-10 qui est pas top pour notre jeu, on retravail donc ce Z avant de le claquer dans la nouvelle position de notre objet
             pos.z = 0;
+            // 
             _currentMoveCircle.transform.parent.parent.position = pos;
+        }
 
-            //_currentMoveCircle.transform.position = pos;
+
+        if(_currentResizeCircle !=null)
+        {
+            // Récupère la position du curseur dans le monde
+
+            
+            // On calcule distance entre le cercle et le curseur, on obtient le radius
+
+
+            // On choppe le composant CircleShape et on lui change son radius
+
         }
 
         #region 
